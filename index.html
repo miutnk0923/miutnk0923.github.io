@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miu Tanaka — Data Analyst Portfolio (Draft)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root{
+    --ink:#1B1E24;
+    --ink-soft:#565D6B;
+    --paper:#F7F8FA;
+    --panel:#FFFFFF;
+    --line:#E2E5EA;
+    --indigo:#4C5FD5;
+    --teal:#158A76;
+    --amber:#C57E1B;
+    --rose:#C4436B;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .draft-banner{
+    background:var(--ink);
+    color:#fff;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.06em;
+    padding:8px 16px;
+  }
+
+  .wrap{ max-width:920px; margin:0 auto; padding:0 24px; }
+
+  /* HERO */
+  .hero{ padding:72px 0 40px; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  h1{
+    font-size:clamp(34px, 5vw, 52px);
+    line-height:1.05;
+    letter-spacing:-.01em;
+    margin:0 0 20px;
+    font-weight:700;
+  }
+  h1 span{ color:var(--indigo); }
+  .lede{
+    font-size:18px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    max-width:56ch;
+    margin:0 0 28px;
+  }
+  .contact-row{
+    display:flex; gap:18px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .contact-row a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); }
+  .contact-row a:hover{ border-color:var(--ink); }
+
+  /* STAT STRIP */
+  .stat-strip{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    border:1px solid var(--line);
+    border-radius:10px;
+    overflow:hidden;
+    background:var(--panel);
+    margin:44px 0 8px;
+  }
+  .stat{
+    padding:20px 18px;
+    border-right:1px solid var(--line);
+  }
+  .stat:last-child{ border-right:none; }
+  .stat-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:26px;
+    margin-bottom:6px;
+  }
+  .stat-label{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.4;
+  }
+  .stat-tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    margin-top:8px;
+    padding:2px 7px;
+    border-radius:4px;
+    color:#fff;
+  }
+  .strip-note{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin:0 0 60px;
+  }
+
+  /* SECTION HEADER */
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin:0 0 22px;
+  }
+  .section-head h2{
+    font-size:22px; margin:0;
+  }
+  .section-head .count{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+
+  /* CASE STUDY CARD */
+  .case{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:36px 36px 32px;
+    margin-bottom:64px;
+    border-top:4px solid var(--indigo);
+  }
+  .case-tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--indigo);
+    margin-bottom:10px;
+  }
+  .case.teal{ border-top-color:var(--teal); }
+  .case.teal .case-tag{ color:var(--teal); }
+  .case.teal .outcome-num{ color:var(--teal); }
+  .case.amber{ border-top-color:var(--amber); }
+  .case.amber .case-tag{ color:var(--amber); }
+  .case.amber .outcome-num{ color:var(--amber); }
+  .case.rose{ border-top-color:var(--rose); }
+  .case.rose .case-tag{ color:var(--rose); }
+  .case.rose .outcome-num{ color:var(--rose); }
+
+  .placeholder-field{
+    color:#A6ABB5;
+    font-style:italic;
+  }
+  .case.is-placeholder{
+    background:
+      repeating-linear-gradient(135deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 10px, transparent 10px, transparent 20px),
+      var(--panel);
+  }
+  .case h3{
+    font-size:26px;
+    margin:0 0 24px;
+    letter-spacing:-.01em;
+  }
+  .case-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px 40px;
+  }
+  .field-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:0 0 8px;
+  }
+  .field-body{
+    font-size:15px;
+    line-height:1.6;
+    margin:0;
+    color:var(--ink);
+  }
+  .field-body b{ font-weight:600; }
+  .case-grid .full{ grid-column:1 / -1; }
+  .outcome-block{
+    margin-top:8px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+  }
+  .outcome-item{
+    display:flex; gap:12px; align-items:baseline;
+    margin-bottom:10px;
+  }
+  .outcome-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:19px; font-weight:600;
+    color:var(--indigo);
+    min-width:64px;
+  }
+
+  footer{
+    padding:40px 0 80px;
+    color:var(--ink-soft);
+    font-size:13px;
+    border-top:1px solid var(--line);
+    margin-top:20px;
+  }
+
+  @media (max-width:640px){
+    .stat-strip{ grid-template-columns:repeat(2,1fr); }
+    .stat:nth-child(2){ border-right:none; }
+    .case-grid{ grid-template-columns:1fr; }
+    .case{ padding:26px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="draft-banner">DRAFT PREVIEW — structure only. 1 card has sample content, 3 are placeholders awaiting UniFirst projects.</div>
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">Business Analytics · Data Storytelling</p>
+    <h1>Miu Tanaka<br><span>turns messy data into decisions.</span></h1>
+    <p class="lede">Data analyst focused on translating ambiguous business problems — wasted ad spend, underpriced listings, unclear customer segments — into clear, measurable action.</p>
+    <div class="contact-row">
+      <a href="mailto:miutnk0923@gmail.com">miutnk0923@gmail.com</a>
+      <a href="#">linkedin.com/in/miu-tanaka</a>
+      <a href="#">github.com/miu-tanaka</a>
+      <span>Seattle, WA</span>
+    </div>
+  </section>
+
+  <div class="stat-strip">
+    <div class="stat">
+      <div class="stat-num" style="color:var(--indigo)">+8%</div>
+      <div class="stat-label">ROI lift from keyword reallocation</div>
+      <span class="stat-tag" style="background:var(--indigo)">Ad Spend</span>
+    </div>
+    <div class="stat">
+      <div class="stat-num placeholder-field" style="color:#A6ABB5">[#]</div>
+      <div class="stat-label placeholder-field">Headline result, once written</div>
+      <span class="stat-tag" style="background:var(--teal)">Pricing</span>
+    </div>
+    <div class="stat">
+      <div class="stat-num placeholder-field" style="color:#A6ABB5">[#]</div>
+      <div class="stat-label placeholder-field">Headline result, once written</div>
+      <span class="stat-tag" style="background:var(--amber)">Segmentation</span>
+    </div>
+    <div class="stat">
+      <div class="stat-num placeholder-field" style="color:#A6ABB5">[#]</div>
+      <div class="stat-label placeholder-field">Headline result, once written</div>
+      <span class="stat-tag" style="background:var(--rose)">A/B Testing</span>
+    </div>
+  </div>
+  <p class="strip-note">↳ headline numbers pulled from case studies below</p>
+
+  <div class="section-head">
+    <h2>Case Studies</h2>
+    <span class="count">1 written · 3 placeholders</span>
+  </div>
+
+  <article class="case">
+    <span class="case-tag">Ad Spend Optimization</span>
+    <h3>Google Ads Performance Optimization — SEO</h3>
+
+    <div class="case-grid">
+      <div>
+        <p class="field-label">Problem</p>
+        <p class="field-body">A ringtone company was wasting nearly half its ad budget. Of 40 targeted keywords, 16 generated zero or negative ROI — <b>47% of total spend</b>.</p>
+      </div>
+      <div>
+        <p class="field-label">Objective</p>
+        <p class="field-body">Improve ad spend efficiency by identifying high-performing keywords, reallocating budget strategically, and lifting ROI by at least <b>5%</b>.</p>
+      </div>
+      <div class="full">
+        <p class="field-label">Action</p>
+        <p class="field-body">Identified that keyword <b>position</b> had a strong negative correlation with conversion. Filtered out 16 underperforming keywords and reallocated spend based on individual ROI contribution and optimal bid position.</p>
+      </div>
+
+      <div class="full outcome-block">
+        <p class="field-label">Outcome</p>
+        <div class="outcome-item">
+          <span class="outcome-num">+8%</span>
+          <span class="field-body">lift in ROI, surpassing the 5% goal</span>
+        </div>
+        <div class="outcome-item">
+          <span class="outcome-num">0%</span>
+          <span class="field-body">of budget left on underperforming keywords after reallocation</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="case teal is-placeholder">
+    <span class="case-tag">Category — e.g. Pricing / Retention / Ops</span>
+    <h3 class="placeholder-field">[ Project Title ]</h3>
+
+    <div class="case-grid">
+      <div>
+        <p class="field-label">Problem</p>
+        <p class="field-body placeholder-field">What business problem existed before this project? Who was affected, and what was it costing?</p>
+      </div>
+      <div>
+        <p class="field-label">Objective</p>
+        <p class="field-body placeholder-field">What specific, measurable goal were you working toward?</p>
+      </div>
+      <div class="full">
+        <p class="field-label">Action</p>
+        <p class="field-body placeholder-field">What did you actually do — tools, methods, key decisions along the way?</p>
+      </div>
+
+      <div class="full outcome-block">
+        <p class="field-label">Outcome</p>
+        <div class="outcome-item">
+          <span class="outcome-num placeholder-field">[#]</span>
+          <span class="field-body placeholder-field">Primary quantified result</span>
+        </div>
+        <div class="outcome-item">
+          <span class="outcome-num placeholder-field">[#]</span>
+          <span class="field-body placeholder-field">Secondary quantified result or business recommendation</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="case amber is-placeholder">
+    <span class="case-tag">Category — e.g. Segmentation / Forecasting</span>
+    <h3 class="placeholder-field">[ Project Title ]</h3>
+
+    <div class="case-grid">
+      <div>
+        <p class="field-label">Problem</p>
+        <p class="field-body placeholder-field">What business problem existed before this project? Who was affected, and what was it costing?</p>
+      </div>
+      <div>
+        <p class="field-label">Objective</p>
+        <p class="field-body placeholder-field">What specific, measurable goal were you working toward?</p>
+      </div>
+      <div class="full">
+        <p class="field-label">Action</p>
+        <p class="field-body placeholder-field">What did you actually do — tools, methods, key decisions along the way?</p>
+      </div>
+
+      <div class="full outcome-block">
+        <p class="field-label">Outcome</p>
+        <div class="outcome-item">
+          <span class="outcome-num placeholder-field">[#]</span>
+          <span class="field-body placeholder-field">Primary quantified result</span>
+        </div>
+        <div class="outcome-item">
+          <span class="outcome-num placeholder-field">[#]</span>
+          <span class="field-body placeholder-field">Secondary quantified result or business recommendation</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="case rose is-placeholder">
+    <span class="case-tag">Category — e.g. Experimentation / A-B Testing</span>
+    <h3 class="placeholder-field">[ Project Title ]</h3>
+
+    <div class="case-grid">
+      <div>
+        <p class="field-label">Problem</p>
+        <p class="field-body placeholder-field">What business problem existed before this project? Who was affected, and what was it costing?</p>
+      </div>
+      <div>
+        <p class="field-label">Objective</p>
+        <p class="field-body placeholder-field">What specific, measurable goal were you working toward?</p>
+      </div>
+      <div class="full">
+        <p class="field-label">Action</p>
+        <p class="field-body placeholder-field">What did you actually do — tools, methods, key decisions along the way?</p>
+      </div>
+
+      <div class="full outcome-block">
+        <p class="field-label">Outcome</p>
+        <div class="outcome-item">
+          <span class="outcome-num placeholder-field">[#]</span>
+          <span class="field-body placeholder-field">Primary quantified result</span>
+        </div>
+        <div class="outcome-item">
+          <span class="outcome-num placeholder-field">[#]</span>
+          <span class="field-body placeholder-field">Secondary quantified result or business recommendation</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    Draft layout — next up: swap each placeholder card for a real UniFirst project (problem, objective, action, outcome), then update the stat strip numbers to match.
+  </footer>
+
+</div>
+</body>
+</html>
