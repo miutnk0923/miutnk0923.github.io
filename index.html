@@ -260,9 +260,9 @@
       <span class="stat-tag" style="background:var(--teal)">Pricing</span>
     </div>
     <div class="stat">
-      <div class="stat-num placeholder-field" style="color:#A6ABB5">[#]</div>
-      <div class="stat-label placeholder-field">Headline result, once written</div>
-      <span class="stat-tag" style="background:var(--amber)">Segmentation</span>
+      <div class="stat-num" style="color:var(--rose)">78.7%</div>
+      <div class="stat-label">relative conversion lift from ad exposure (IPW)</div>
+      <span class="stat-tag" style="background:var(--rose)">A/B Testing</span>
     </div>
     <div class="stat">
       <div class="stat-num placeholder-field" style="color:#A6ABB5">[#]</div>
@@ -346,37 +346,40 @@
     </div>
   </article>
 
-  <article class="case amber is-placeholder">
-    <span class="case-tag">Category — e.g. Segmentation / Forecasting</span>
-    <h3 class="placeholder-field">[ Project Title ]</h3>
+  <article class="case amber">
+  <span class="case-tag">Causal Inference · A/B Testing</span>
+  <h3>Quantifying Ad Exposure Lift with Inverse Probability Weighting (IPW)</h3>
 
-    <div class="case-grid">
-      <div>
-        <p class="field-label">Problem</p>
-        <p class="field-body placeholder-field">What business problem existed before this project? Who was affected, and what was it costing?</p>
-      </div>
-      <div>
-        <p class="field-label">Objective</p>
-        <p class="field-body placeholder-field">What specific, measurable goal were you working toward?</p>
-      </div>
-      <div class="full">
-        <p class="field-label">Action</p>
-        <p class="field-body placeholder-field">What did you actually do — tools, methods, key decisions along the way?</p>
-      </div>
+  <div class="case-grid">
+    <div>
+      <p class="field-label">Problem</p>
+      <p class="field-body">A digital marketing team needed to know whether exposing users to a new ad campaign actually increased conversions — and how that effect varied across user segments — rather than relying on a naive before/after comparison.</p>
+    </div>
+    <div>
+      <p class="field-label">Objective</p>
+      <p class="field-body">Quantify the true causal impact of ad exposure on conversion using rigorous statistical methods, producing reliable lift estimates the team could confidently act on.</p>
+    </div>
+    <div class="full">
+      <p class="field-label">Action</p>
+      <p class="field-body">Designed and analyzed a randomized controlled experiment across ~2M users. After validating randomization, calculated Average Treatment Effect on the Treated (ATT) and Intent-to-Treat (ITT), then applied Inverse Probability Weighting (IPW) alongside regression and Double Machine Learning models to control for covariates like prior conversion behavior, activity level, and income — isolating the true causal effect of ad exposure from simple correlation.</p>
+    </div>
 
-      <div class="full outcome-block">
-        <p class="field-label">Outcome</p>
-        <div class="outcome-item">
-          <span class="outcome-num placeholder-field">[#]</span>
-          <span class="field-body placeholder-field">Primary quantified result</span>
-        </div>
-        <div class="outcome-item">
-          <span class="outcome-num placeholder-field">[#]</span>
-          <span class="field-body placeholder-field">Secondary quantified result or business recommendation</span>
-        </div>
+    <div class="full outcome-block">
+      <p class="field-label">Outcome</p>
+      <div class="outcome-item">
+        <span class="outcome-num">26.2%</span>
+        <span class="field-body">Average Treatment Effect on the Treated (ATT)</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-num">78.7%</span>
+        <span class="field-body">relative lift in conversions from ad exposure, validating ad effectiveness beyond naive measurement</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-num">+25%</span>
+        <span class="field-body">projected ROI improvement by targeting high-activity, previously-converted users specifically</span>
       </div>
     </div>
-  </article>
+  </div>
 
   <article class="case rose is-placeholder">
     <span class="case-tag">Category — e.g. Experimentation / A-B Testing</span>
