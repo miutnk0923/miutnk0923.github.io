@@ -3,21 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miu Tanaka - Marketing Data Analyst Portfolio (Draft)</title>
+<title>Miu Tanaka — Data Analyst Portfolio</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600;700&display=swap');
 
-:root{
+  :root{
     --ink:#2B2420;
     --ink-soft:#7C7062;
-    --paper:#fffdf7;
-    --panel:#fdfdfd;
+    --paper:#F3ECDC;
+    --panel:#FFFDF6;
     --line:#E5D9C2;
-    --indigo:#C1652B;
-    --teal:#4B7856;
-    --amber:#3D6088;
-    --rose:#B3453D;
-    --navy:#2C4A6B;
+    --clay:#C1652B;    /* Lead Intelligence */
+    --forest:#4B7856;  /* Engaged Contacts */
+    --denim:#3D6088;   /* Email KPI Dashboard */
+    --brick:#B3453D;   /* A/B Testing */
+    --gold:#C99A2E;    /* signature accent, hero only */
+    --sidebar-w:320px;
   }
 
   *{ box-sizing:border-box; }
@@ -26,24 +27,149 @@
     margin:0;
     background:var(--paper);
     color:var(--ink);
-    font-family:'Source Serif 4', sans-serif;
+    font-family:'Source Serif 4', serif;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
 
-  .draft-banner{
-    background:var(--ink);
-    color:#fff;
-    text-align:center;
-    font-family:'IBM Plex Mono', monospace;
+  a{ color:inherit; }
+
+  /* subtle graph-paper texture, no photography */
+  body:before{
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:44px 44px;
+    opacity:.22;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* soft color blobs for the glass panels to blur against, no photography */
+  #blobs{
+    position:fixed; inset:0;
+    z-index:-1;
+    pointer-events:none;
+    background:
+      radial-gradient(620px circle at 12% 18%, rgba(193,101,43,.20), transparent 60%),
+      radial-gradient(700px circle at 88% 12%, rgba(61,96,136,.18), transparent 60%),
+      radial-gradient(650px circle at 78% 88%, rgba(75,120,86,.18), transparent 60%),
+      radial-gradient(560px circle at 18% 90%, rgba(179,69,61,.16), transparent 60%),
+      radial-gradient(520px circle at 50% 48%, rgba(201,154,46,.12), transparent 65%);
+  }
+
+  /* ===== SIDEBAR ===== */
+  #sidebar{
+    position:fixed;
+    top:0; left:0; bottom:0;
+    width:var(--sidebar-w);
+    padding:40px 34px;
+    display:flex;
+    flex-direction:column;
+    border-right:1px solid rgba(255,255,255,.5);
+    background:rgba(243,236,220,.55);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+    z-index:20;
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+    #sidebar{ background:var(--paper); }
+  }
+  .brand{
+    font-family:'Source Serif 4', serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:-.01em;
+    margin:0 0 2px;
+  }
+  .brand-role{
+    font-family:'Libre Franklin', sans-serif;
     font-size:12px;
     letter-spacing:.06em;
-    padding:8px 16px;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:0 0 40px;
   }
 
-  .wrap{ max-width:920px; margin:0 auto; padding:0 24px; }
+  #nav{ list-style:none; margin:0; padding:0; flex:1; }
+  #nav li{ margin-bottom:2px; }
+  #nav a{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    text-decoration:none;
+    font-family:'Libre Franklin', sans-serif;
+    font-size:14.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+    padding:9px 10px;
+    border-radius:6px;
+    transition:background .15s ease, color .15s ease;
+  }
+  #nav a .idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--line);
+    width:18px;
+  }
+  #nav a:hover{ background:var(--panel); color:var(--ink); }
+  #nav a.active{ background:var(--panel); color:var(--ink); font-weight:600; }
+  #nav a.active .idx{ color:var(--clay); }
+  #nav li.nav-gap{ height:18px; }
 
-  /* HERO */
-  .hero{ padding:72px 0 40px; }
+  #status-line{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+  #status-line .cursor{
+    display:inline-block;
+    width:7px; height:12px;
+    background:var(--clay);
+    margin-left:2px;
+    vertical-align:-2px;
+    animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  #hamburger{ display:none; }
+
+  /* ===== MAIN ===== */
+  #main{
+    margin-left:var(--sidebar-w);
+    position:relative;
+    min-height:100vh;
+    z-index:1;
+  }
+
+  article{
+    display:none;
+    max-width:760px;
+    margin:56px 56px 56px 0;
+    padding:56px 60px;
+    border-radius:22px;
+    background:rgba(255,253,246,.55);
+    backdrop-filter:blur(26px);
+    -webkit-backdrop-filter:blur(26px);
+    border:1px solid rgba(255,255,255,.6);
+    box-shadow:0 12px 44px rgba(43,36,32,.10);
+    position:relative;
+    animation:panelIn .45s ease;
+  }
+  article.active{ display:block; }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+    article{ background:var(--panel); }
+  }
+
+  @keyframes panelIn{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
   .eyebrow{
     font-family:'Libre Franklin', sans-serif;
     font-size:12px;
@@ -53,370 +179,404 @@
     margin:0 0 18px;
   }
   h1{
-    font-size:clamp(34px, 5vw, 52px);
-    line-height:1.05;
+    font-size:clamp(32px, 4.4vw, 48px);
+    line-height:1.08;
     letter-spacing:-.01em;
-    margin:0 0 20px;
+    margin:0 0 22px;
     font-weight:700;
-    font-family:'Source Serif 4', serif;
   }
-  h1 span{ color:var(--navy); }
+  h1 span{ color:var(--gold); }
+  h2.panel-title{
+    font-size:30px;
+    line-height:1.15;
+    margin:0 0 26px;
+    letter-spacing:-.01em;
+  }
   .lede{
     font-size:18px;
-    line-height:1.6;
+    line-height:1.65;
     color:var(--ink-soft);
     max-width:56ch;
-    margin:0 0 28px;
+    margin:0 0 30px;
+    font-family:'Source Serif 4', serif;
   }
   .contact-row{
-    display:flex; gap:18px; flex-wrap:wrap;
+    display:flex; gap:20px; flex-wrap:wrap;
     font-family:'IBM Plex Mono', monospace;
     font-size:13px;
     color:var(--ink-soft);
+    margin-bottom:44px;
   }
-  .contact-row a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); }
+  .contact-row a{ text-decoration:none; border-bottom:1px solid var(--line); }
   .contact-row a:hover{ border-color:var(--ink); }
 
-  /* STAT STRIP */
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Libre Franklin', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    background:var(--ink);
+    color:var(--panel);
+    padding:12px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    width:fit-content;
+  }
+  .cta:hover{ background:var(--clay); }
+
+  /* stat strip on Intro */
   .stat-strip{
     display:grid;
-    grid-template-columns:repeat(4, 1fr);
+    grid-template-columns:repeat(3, 1fr);
     border:1px solid var(--line);
     border-radius:10px;
     overflow:hidden;
     background:var(--panel);
-    margin:44px 0 8px;
+    margin-top:52px;
   }
-  .stat{
-    padding:20px 18px;
-    border-right:1px solid var(--line);
-  }
+  .stat{ padding:20px 18px; border-right:1px solid var(--line); }
   .stat:last-child{ border-right:none; }
   .stat-num{
     font-family:'IBM Plex Mono', monospace;
     font-weight:600;
-    font-size:26px;
+    font-size:24px;
     margin-bottom:6px;
   }
-  .stat-label{
-    font-size:12.5px;
-    color:var(--ink-soft);
-    line-height:1.4;
-  }
-  .stat-tag{
-    display:inline-block;
-    font-family:'Libre Franklin', sans-serif;
-    font-size:10.5px;
-    letter-spacing:.04em;
-    text-transform:uppercase;
-    margin-top:8px;
-    padding:2px 7px;
-    border-radius:4px;
-    color:#fff;
-  }
-  .strip-note{
-    font-family:'Libre Franklin', sans-serif;
-    font-size:11.5px;
-    color:var(--ink-soft);
-    margin:0 0 60px;
-  }
+  .stat-label{ font-family:'Libre Franklin', sans-serif; font-size:12.5px; color:var(--ink-soft); line-height:1.4; }
 
-  /* SECTION HEADER */
-  .section-head{
-    display:flex; align-items:baseline; justify-content:space-between;
-    margin:0 0 22px;
-  }
-  .section-head h2{
-    font-size:22px; margin:0;
-  }
-  .section-head .count{
-    font-family:'Libre Franklin', sans-serif;
-    font-size:12px;
-    color:var(--ink-soft);
-  }
-
-  /* CASE STUDY CARD */
-  .case{
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:36px 36px 32px;
-    margin-bottom:64px;
-    border-top:4px solid var(--indigo);
-  }
+  /* project panel structure */
   .case-tag{
     display:inline-block;
     font-family:'Libre Franklin', sans-serif;
     font-size:11px;
+    font-weight:600;
     letter-spacing:.06em;
     text-transform:uppercase;
-    color:var(--indigo);
-    margin-bottom:10px;
+    color:#fff;
+    padding:4px 10px;
+    border-radius:5px;
+    margin-bottom:16px;
   }
-  .case.teal{ border-top-color:var(--teal); }
-  .case.teal .case-tag{ color:var(--teal); }
-  .case.teal .outcome-num{ color:var(--teal); }
-  .case.amber{ border-top-color:var(--amber); }
-  .case.amber .case-tag{ color:var(--amber); }
-  .case.amber .outcome-num{ color:var(--amber); }
-  .case.rose{ border-top-color:var(--rose); }
-  .case.rose .case-tag{ color:var(--rose); }
-  .case.rose .outcome-num{ color:var(--rose); }
-
-  .placeholder-field{
-    color:#A6ABB5;
-    font-style:italic;
-  }
-  .case.is-placeholder{
-    background:
-      repeating-linear-gradient(135deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 10px, transparent 10px, transparent 20px),
-      var(--panel);
-  }
-  .case h3{
-    font-size:26px;
-    margin:0 0 24px;
-    letter-spacing:-.01em;
+  .status-pill{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    border:1px solid var(--line);
+    padding:3px 9px;
+    border-radius:20px;
+    margin-left:10px;
   }
   .case-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:28px 40px;
+    margin-top:8px;
   }
+  .case-grid .full{ grid-column:1 / -1; }
   .field-label{
     font-family:'Libre Franklin', sans-serif;
     font-size:11px;
+    font-weight:600;
     letter-spacing:.08em;
     text-transform:uppercase;
     color:var(--ink-soft);
     margin:0 0 8px;
   }
-  .field-body{
-    font-size:15px;
-    line-height:1.6;
-    margin:0;
-    color:var(--ink);
-  }
+  .field-body{ font-size:15.5px; line-height:1.65; margin:0; color:var(--ink); }
   .field-body b{ font-weight:600; }
-  .case-grid .full{ grid-column:1 / -1; }
-  .outcome-block{
-    margin-top:8px;
-    padding-top:24px;
-    border-top:1px solid var(--line);
-  }
-  .outcome-item{
-    display:flex; gap:12px; align-items:baseline;
-    margin-bottom:10px;
-  }
+  .outcome-block{ margin-top:10px; padding-top:26px; border-top:1px solid var(--line); }
+  .outcome-item{ display:flex; gap:14px; align-items:baseline; margin-bottom:12px; }
   .outcome-num{
     font-family:'IBM Plex Mono', monospace;
     font-size:19px; font-weight:600;
-    color:var(--indigo);
-    min-width:64px;
+    min-width:70px;
   }
-
-  footer{
-    padding:40px 0 80px;
+  .draft-note{
+    margin-top:34px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
     color:var(--ink-soft);
-    font-size:13px;
-    border-top:1px solid var(--line);
-    margin-top:20px;
+    border-top:1px dashed var(--line);
+    padding-top:16px;
   }
 
-  @media (max-width:640px){
-    .stat-strip{ grid-template-columns:repeat(2,1fr); }
-    .stat:nth-child(2){ border-right:none; }
+  .placeholder-block{
+    border:1px dashed var(--line);
+    border-radius:10px;
+    padding:28px;
+    font-size:15px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    background:var(--panel);
+  }
+
+  footer.site-footer{
+    padding:0 60px 60px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width:900px){
+    :root{ --sidebar-w:0px; }
+    #sidebar{
+      width:100%;
+      height:auto;
+      bottom:auto;
+      border-right:none;
+      border-bottom:1px solid var(--line);
+      padding:20px 24px;
+      flex-direction:row;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand-role{ display:none; }
+    #hamburger{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:38px; height:38px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:var(--panel);
+      font-family:'IBM Plex Mono', monospace;
+      font-size:16px;
+      cursor:pointer;
+    }
+    #nav{
+      display:none;
+      position:fixed;
+      top:73px; left:0; right:0; bottom:0;
+      background:var(--paper);
+      padding:20px 24px;
+      overflow-y:auto;
+      z-index:19;
+    }
+    #nav.open{ display:block; }
+    #status-line{ display:none; }
+    #main{ margin-left:0; margin-top:73px; }
+    article{ margin:20px 16px; padding:32px 22px 56px; border-radius:16px; }
     .case-grid{ grid-template-columns:1fr; }
-    .case{ padding:26px 22px; }
+    .stat-strip{ grid-template-columns:1fr; }
+    .stat{ border-right:none; border-bottom:1px solid var(--line); }
+    .stat:last-child{ border-bottom:none; }
   }
 </style>
 </head>
 <body>
 
-<div class="draft-banner">DRAFT PREVIEW — structure only. 1 card has sample content, 3 are placeholders awaiting UniFirst projects.</div>
+<div id="blobs" aria-hidden="true"></div>
 
-<div class="wrap">
+<div id="sidebar">
+  <div style="display:flex; align-items:center; justify-content:space-between; width:100%;">
+    <div>
+      <p class="brand">Miu Tanaka</p>
+      <p class="brand-role">Data &amp; Marketing Analyst</p>
+    </div>
+    <button id="hamburger" aria-label="Toggle menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  </div>
 
-  <section class="hero">
-    <p class="eyebrow">Data Analyst · Insights & Storytelling</p>
+  <ul id="nav">
+    <li><a href="#intro" data-idx="00"><span class="idx">00</span>Intro</a></li>
+    <li class="nav-gap"></li>
+    <li><a href="#ab-testing" data-idx="01"><span class="idx">01</span>A/B Testing — IPW</a></li>
+    <li><a href="#email-kpi" data-idx="02"><span class="idx">02</span>Email KPI Dashboard</a></li>
+    <li><a href="#lead-intel" data-idx="03"><span class="idx">03</span>Lead Intelligence</a></li>
+    <li><a href="#engaged-contacts" data-idx="04"><span class="idx">04</span>Engaged Contacts</a></li>
+    <li class="nav-gap"></li>
+    <li><a href="#about" data-idx="05"><span class="idx">05</span>About</a></li>
+    <li><a href="#contact" data-idx="06"><span class="idx">06</span>Contact</a></li>
+  </ul>
+
+  <p id="status-line">$ viewing: <span id="status-target">intro</span><span class="cursor"></span></p>
+</div>
+
+<div id="main">
+
+  <article id="intro" class="active">
+    <p class="eyebrow">Business Analytics · Data Storytelling</p>
     <h1>Miu Tanaka<br><span>turns messy data into decisions.</span></h1>
-    <p class="lede"> Data analyst passionate about growing through “better” (data-driven) decision-making and turning insights into actions. </p>
+    <p class="lede">Data analyst focused on translating ambiguous business problems — wasted ad spend, unclear lead quality, low-visibility campaign performance — into clear, measurable action.</p>
     <div class="contact-row">
       <a href="mailto:miutnk0923@gmail.com">miutnk0923@gmail.com</a>
-      <a href="https://www.linkedin.com/in/miu-tanaka/">linkedin.com/in/miu-tanaka</a>
-      <a href="https://github.com/miutnk0923">github.com/miutnk0923</a>
-      <span>Greater Boston Area</span>
+      <a href="#">linkedin.com/in/miu-tanaka</a>
+      <a href="#">github.com/miu-tanaka</a>
+      <span>Massachusetts</span>
     </div>
-  </section>
+    <a class="cta" href="#ab-testing">See the work →</a>
 
-  <div class="stat-strip">
-    <div class="stat">
-      <div class="stat-num" style="color:var(--indigo)">~+21%</div>
-      <div class="stat-label">QoQ growth in qualified leads (in progress)</div>
-      <span class="stat-tag" style="background:var(--indigo)">Lead Intelligence</span>
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="stat-num" style="color:var(--brick)">78.7%</div>
+        <div class="stat-label">relative conversion lift, ad exposure (A/B test)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" style="color:var(--clay)">~22%</div>
+        <div class="stat-label">fewer false-negative lead misclassifications</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" style="color:var(--denim)">~4 hrs</div>
+        <div class="stat-label">manual reporting saved per week, Email KPI dashboard</div>
+      </div>
     </div>
-    <div class="stat">
-      <div class="stat-num placeholder-field" style="color:#A6ABB5">[#]</div>
-      <div class="stat-label placeholder-field">Headline result, once written</div>
-      <span class="stat-tag" style="background:var(--teal)">Pricing</span>
-    </div>
-    <div class="stat">
-      <div class="stat-num" style="color:var(--amber)">78.7%</div>
-      <div class="stat-label">relative conversion lift from ad exposure (IPW)</div>
-      <span class="stat-tag" style="background:var(--amber)">A/B Testing</span>
-    </div>
-    <div class="stat">
-      <div class="stat-num placeholder-field" style="color:#A6ABB5">[#]</div>
-      <div class="stat-label placeholder-field">Headline result, once written</div>
-      <span class="stat-tag" style="background:var(--rose)">A/B Testing</span>
-    </div>
-  </div>
-  <p class="strip-note">↳ headline numbers pulled from projects below</p>
+  </article>
 
-  <div class="section-head">
-    <h2>Business Data Analytics Projects</h2>
-    <span class="count">1 written · 3 placeholders</span>
-  </div>
-  
- <article class="case indigo">
-    <span class="case-tag">Predictive Analytics · Marketing Attribution</span>
-    <h3>Lead Intelligence: Predictive Scoring &amp; Budget Attribution <span style="font-size:15px; font-weight:400; color:var(--ink-soft);">— In Progress</span></h3>
-
+  <article id="ab-testing">
+    <span class="case-tag" style="background:var(--brick)">A/B Testing · Causal Inference</span>
+    <h2 class="panel-title">A/B Testing — Ad Performance Lift</h2>
     <div class="case-grid">
       <div>
         <p class="field-label">Problem</p>
-        <p class="field-body">Budget and targeting decisions relied on descriptive, after-the-fact reporting — campaign performance was only understood once spend was already committed, and lead quality wasn't assessed until leads had already entered the CRM.</p>
+        <p class="field-body">A digital marketing team needed to know whether exposing users to a new online ad campaign meaningfully increased conversion, and how that effect varied across user segments.</p>
       </div>
       <div>
         <p class="field-label">Objective</p>
-        <p class="field-body">Build predictive analytics and attribution intelligence that shifts decision-making from hindsight to foresight — forecasting lead quality before spend is committed, enabling smarter budget allocation across paid and organic channels without increasing total spend.</p>
+        <p class="field-body">Quantify the causal impact of ad exposure on conversion using rigorous statistical methods, and recommend strategy based on reliable lift estimates rather than naive comparisons.</p>
       </div>
       <div class="full">
         <p class="field-label">Action</p>
-        <p class="field-body">Cleaned and structured a large multi-source lead dataset, diagnosed the patterns behind disqualified leads, and built a first-touch/last-touch attribution framework to separate campaigns that generate initial interest ("originators") from campaigns that convert leads into qualified appointments ("closers") — clarifying which channels deserve more investment and why.</p>
+        <p class="field-body">Ran randomization checks to validate the experimental design across <b>2M users</b>, then calculated Average Treatment Effect on the Treated (<b>ATT: 26.2%</b>) and Intent-to-Treat (<b>ITT: 23.8%</b>). Applied Inverse Probability Weighting, Double Machine Learning, and regression models to control for covariates like prior conversion behavior, activity level, and income.</p>
       </div>
+      <div class="full outcome-block">
+        <p class="field-label">Outcome</p>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--brick)">+11.8%</span><span class="field-body">absolute conversion lift from ad exposure (78.7% relative)</span></div>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--brick)">+25%</span><span class="field-body">projected ROI from retargeting high-activity, previously-converted users</span></div>
+      </div>
+    </div>
+  </article>
 
+  <article id="email-kpi">
+    <span class="case-tag" style="background:var(--denim)">Reporting · Dashboarding</span>
+    <h2 class="panel-title">Email KPI Dashboard <span class="status-pill">Live at UniFirst</span></h2>
+    <div class="case-grid">
+      <div>
+        <p class="field-label">Problem</p>
+        <p class="field-body">Email campaign performance was tracked through ad hoc, manual reporting — making it slow to answer basic questions about CTR, open rate, or campaign-level trends.</p>
+      </div>
+      <div>
+        <p class="field-label">Objective</p>
+        <p class="field-body">Build one executive-level source of truth for email KPIs, so stakeholders could see performance without asking for a custom pull each time.</p>
+      </div>
+      <div class="full">
+        <p class="field-label">Action</p>
+        <p class="field-body">Designed and built a Tableau dashboard tracking CTR, open rate, and campaign-level performance, connected directly to CRM data and replacing recurring manual reporting.</p>
+      </div>
+      <div class="full outcome-block">
+        <p class="field-label">Outcome</p>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--denim)">~4 hrs</span><span class="field-body">of manual reporting work saved per week</span></div>
+      </div>
+    </div>
+    <p class="draft-note">Draft copy — refine wording before this goes live.</p>
+  </article>
+
+  <article id="lead-intel">
+    <span class="case-tag" style="background:var(--clay)">Predictive Scoring · Budget Attribution</span>
+    <h2 class="panel-title">Lead Intelligence <span class="status-pill">In Progress</span></h2>
+    <div class="case-grid">
+      <div>
+        <p class="field-label">Problem</p>
+        <p class="field-body">The sales team had low confidence in lead prioritization — high false-negative rates meant genuinely qualified prospects were being deprioritized or missed.</p>
+      </div>
+      <div>
+        <p class="field-label">Objective</p>
+        <p class="field-body">Improve lead-scoring accuracy and campaign budget allocation across the funnel, without increasing total spend.</p>
+      </div>
+      <div class="full">
+        <p class="field-label">Action</p>
+        <p class="field-body">Engineered predictive lead qualification models (Python, XGBoost, scikit-learn) across a multi-million-record CRM database. Built propensity-based campaign budget scoring models, and ran segmentation and clustering across CRM and campaign data to surface funnel bottlenecks.</p>
+      </div>
       <div class="full outcome-block">
         <p class="field-label">Outcome (in progress)</p>
-        <div class="outcome-item">
-          <span class="outcome-num">~+7%</span>
-          <span class="field-body">quarter-over-quarter growth in lead volume after applying early model findings to budget reallocation</span>
-        </div>
-        <div class="outcome-item">
-          <span class="outcome-num">~+21%</span>
-          <span class="field-body">quarter-over-quarter growth in qualified leads — nearly 3x the raw lead-volume lift</span>
-        </div>
-        <div class="outcome-item">
-          <span class="outcome-num">~+13%</span>
-          <span class="field-body">relative improvement in qualified rate, indicating the reallocation improved lead quality, not just volume. Full predictive model (Phase 5) still in development.</span>
-        </div>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">~22%</span><span class="field-body">reduction in false-negative lead misclassifications</span></div>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">~24%</span><span class="field-body">engagement lift, ~33% improvement in targeted conversion</span></div>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">28–32%</span><span class="field-body">projected ROI uplift at flat spend</span></div>
       </div>
+    </div>
+    <p class="draft-note">Draft copy, relative metrics only — refine before publishing.</p>
+  </article>
+
+  <article id="engaged-contacts">
+    <span class="case-tag" style="background:var(--forest)">Customer Analytics</span>
+    <h2 class="panel-title">Engaged Contacts Analysis <span class="status-pill">Phase 1 · In Progress</span></h2>
+    <div class="placeholder-block">
+      Case study write-up coming soon. Phase 1 (data cleaning) is underway in the matching GitHub repo — this panel will get the full Problem / Objective / Action / Outcome treatment once the analysis is further along.
     </div>
   </article>
 
-  <article class="case teal is-placeholder">
-    <span class="case-tag">Category — e.g. Pricing / Retention / Ops</span>
-    <h3 class="placeholder-field">[ Project Title ]</h3>
+  <article id="about">
+    <span class="eyebrow">About</span>
+    <h2 class="panel-title">Hi, I'm Miu.</h2>
+    <p class="field-body" style="max-width:60ch; font-size:16px; line-height:1.75;">
+      I'm a data &amp; marketing analyst currently at UniFirst Corporation, where I build predictive models and dashboards that help sales and marketing teams make sharper, faster decisions. Before this, I earned my M.S. in Business Analytics from the University of Washington's Foster School of Business, following a background in social media marketing analytics.
+      <br><br>
+      I like problems that sit at the intersection of data and go-to-market strategy — where the answer isn't just a number, but a recommendation someone can actually act on. Python, SQL, and Tableau are my daily tools; causal inference and predictive modeling are where I do my best thinking.
+    </p>
+    <p class="draft-note">Draft copy — this is the section most worth making sound like you, not me.</p>
+  </article>
 
-    <div class="case-grid">
-      <div>
-        <p class="field-label">Problem</p>
-        <p class="field-body placeholder-field">What business problem existed before this project? Who was affected, and what was it costing?</p>
-      </div>
-      <div>
-        <p class="field-label">Objective</p>
-        <p class="field-body placeholder-field">What specific, measurable goal were you working toward?</p>
-      </div>
-      <div class="full">
-        <p class="field-label">Action</p>
-        <p class="field-body placeholder-field">What did you actually do — tools, methods, key decisions along the way?</p>
-      </div>
-
-      <div class="full outcome-block">
-        <p class="field-label">Outcome</p>
-        <div class="outcome-item">
-          <span class="outcome-num placeholder-field">[#]</span>
-          <span class="field-body placeholder-field">Primary quantified result</span>
-        </div>
-        <div class="outcome-item">
-          <span class="outcome-num placeholder-field">[#]</span>
-          <span class="field-body placeholder-field">Secondary quantified result or business recommendation</span>
-        </div>
-      </div>
+  <article id="contact">
+    <span class="eyebrow">Contact</span>
+    <h2 class="panel-title">Let's talk.</h2>
+    <p class="lede">Open to data analyst and marketing analytics roles. The fastest way to reach me is email.</p>
+    <div class="contact-row" style="margin-bottom:0;">
+      <a href="mailto:miutnk0923@gmail.com">miutnk0923@gmail.com</a>
+      <a href="#">linkedin.com/in/miu-tanaka</a>
+      <a href="#">github.com/miu-tanaka</a>
+      <span>Massachusetts</span>
     </div>
   </article>
 
-  <article class="case amber">
-    <span class="case-tag">Causal Inference · A/B Testing</span>
-    <h3>Quantifying Ad Exposure Lift with Inverse Probability Weighting (IPW)</h3>
-
-    <div class="case-grid">
-      <div>
-        <p class="field-label">Problem</p>
-        <p class="field-body">A digital marketing team needed to know whether exposing users to a new ad campaign actually increased conversions — and how that effect varied across user segments — rather than relying on a naive before/after comparison.</p>
-      </div>
-      <div>
-        <p class="field-label">Objective</p>
-        <p class="field-body">Quantify the true causal impact of ad exposure on conversion using rigorous statistical methods, producing reliable lift estimates the team could confidently act on.</p>
-      </div>
-      <div class="full">
-        <p class="field-label">Action</p>
-        <p class="field-body">Designed and analyzed a randomized controlled experiment across ~2M users. After validating randomization, calculated Average Treatment Effect on the Treated (ATT) and Intent-to-Treat (ITT), then applied Inverse Probability Weighting (IPW) alongside regression and Double Machine Learning models to control for covariates like prior conversion behavior, activity level, and income — isolating the true causal effect of ad exposure from simple correlation.</p>
-      </div>
-
-      <div class="full outcome-block">
-        <p class="field-label">Outcome</p>
-        <div class="outcome-item">
-          <span class="outcome-num">26.2%</span>
-          <span class="field-body">Average Treatment Effect on the Treated (ATT)</span>
-        </div>
-        <div class="outcome-item">
-          <span class="outcome-num">78.7%</span>
-          <span class="field-body">relative lift in conversions from ad exposure, validating ad effectiveness beyond naive measurement</span>
-        </div>
-        <div class="outcome-item">
-          <span class="outcome-num">+25%</span>
-          <span class="field-body">projected ROI improvement by targeting high-activity, previously-converted users specifically</span>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <article class="case rose is-placeholder">
-    <span class="case-tag">Category — e.g. Experimentation / A-B Testing</span>
-    <h3 class="placeholder-field">[ Project Title ]</h3>
-
-    <div class="case-grid">
-      <div>
-        <p class="field-label">Problem</p>
-        <p class="field-body placeholder-field">What business problem existed before this project? Who was affected, and what was it costing?</p>
-      </div>
-      <div>
-        <p class="field-label">Objective</p>
-        <p class="field-body placeholder-field">What specific, measurable goal were you working toward?</p>
-      </div>
-      <div class="full">
-        <p class="field-label">Action</p>
-        <p class="field-body placeholder-field">What did you actually do — tools, methods, key decisions along the way?</p>
-      </div>
-
-      <div class="full outcome-block">
-        <p class="field-label">Outcome</p>
-        <div class="outcome-item">
-          <span class="outcome-num placeholder-field">[#]</span>
-          <span class="field-body placeholder-field">Primary quantified result</span>
-        </div>
-        <div class="outcome-item">
-          <span class="outcome-num placeholder-field">[#]</span>
-          <span class="field-body placeholder-field">Secondary quantified result or business recommendation</span>
-        </div>
-      </div>
-    </div>
-  </article>
-
-  <footer>
-    WIP - © 2026 Miu Tanaka · <a href="mailto:miutnk0923@gmail.com">miutnk0923@gmail.com</a> · Open to data analyst roles in the Greater Boston Area
-  </footer>
+  <footer class="site-footer">portfolio v2 — built with GitHub Pages</footer>
 
 </div>
+
+<script>
+  var links = document.querySelectorAll('#nav a');
+  var articles = document.querySelectorAll('article');
+  var statusTarget = document.getElementById('status-target');
+  var navList = document.getElementById('nav');
+
+  var labels = {
+    intro: 'intro',
+    'ab-testing': 'reading case study 01/04',
+    'email-kpi': 'reading case study 02/04',
+    'lead-intel': 'reading case study 03/04',
+    'engaged-contacts': 'reading case study 04/04',
+    about: 'about',
+    contact: 'contact'
+  };
+
+  function activate(id, pushHash){
+    articles.forEach(function(a){ a.classList.toggle('active', a.id === id); });
+    links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href') === '#' + id); });
+    if (statusTarget) statusTarget.textContent = labels[id] || id;
+    if (pushHash !== false) history.replaceState(null, '', '#' + id);
+    navList.classList.remove('open');
+    document.getElementById('main').scrollTo(0, 0);
+    window.scrollTo(0, 0);
+  }
+
+  links.forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      activate(link.getAttribute('href').slice(1));
+    });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') activate('intro');
+  });
+
+  var startId = window.location.hash ? window.location.hash.slice(1) : 'intro';
+  if (!document.getElementById(startId)) startId = 'intro';
+  activate(startId, false);
+</script>
+
 </body>
 </html>
