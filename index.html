@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miu Tanaka — Data Analyst Portfolio</title>
+<title>Miu Tanaka - Data Analyst Portfolio</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600;700&display=swap');
 
@@ -229,7 +229,7 @@
   /* stat strip on Intro */
   .stat-strip{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(4, minmax(0, 1fr));
     border:1px solid var(--line);
     border-radius:10px;
     overflow:hidden;
@@ -238,6 +238,11 @@
   }
   .stat{ padding:20px 18px; border-right:1px solid var(--line); }
   .stat:last-child{ border-right:none; }
+  @media (max-width:1100px){
+    .stat-strip{ grid-template-columns:1fr; }
+    .stat{ border-right:none; border-bottom:1px solid var(--line); }
+    .stat:last-child{ border-bottom:none; }
+  }
   .stat-num{
     font-family:'IBM Plex Mono', monospace;
     font-weight:600;
@@ -245,6 +250,19 @@
     margin-bottom:6px;
   }
   .stat-label{ font-family:'Libre Franklin', sans-serif; font-size:12.5px; color:var(--ink-soft); line-height:1.4; }
+
+  .stat-tag{
+    display:inline-block;
+    font-family:'Libre Franklin', sans-serif;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:#fff;
+    padding:3px 8px;
+    border-radius:5px;
+    margin-bottom:10px;
+  }
 
   /* project panel structure */
   .case-tag{
@@ -383,53 +401,96 @@
   </div>
 
   <ul id="nav">
-    <li><a href="#intro" data-idx="00"><span class="idx">00</span>Intro</a></li>
+    <li><a class="panel-link" href="#intro" data-idx="00"><span class="idx">00</span>Intro</a></li>
     <li class="nav-gap"></li>
-    <li><a href="#ab-testing" data-idx="01"><span class="idx">01</span>A/B Testing — IPW</a></li>
-    <li><a href="#email-kpi" data-idx="02"><span class="idx">02</span>Email KPI Dashboard</a></li>
-    <li><a href="#lead-intel" data-idx="03"><span class="idx">03</span>Lead Intelligence</a></li>
-    <li><a href="#engaged-contacts" data-idx="04"><span class="idx">04</span>Engaged Contacts</a></li>
+    <li><a class="panel-link" href="#lead-intel" data-idx="01"><span class="idx">01</span>Lead Intelligence</a></li>
+    <li><a class="panel-link" href="#engaged-contacts" data-idx="02"><span class="idx">02</span>Engaged Contacts</a></li>
+    <li><a class="panel-link" href="#ab-testing" data-idx="03"><span class="idx">03</span>A/B Testing - IPW</a></li>
+    <li><a class="panel-link" href="#email-kpi" data-idx="04"><span class="idx">04</span>Tableau KPI Dashboard</a></li>
     <li class="nav-gap"></li>
-    <li><a href="#about" data-idx="05"><span class="idx">05</span>About</a></li>
-    <li><a href="#contact" data-idx="06"><span class="idx">06</span>Contact</a></li>
+    <li><a class="panel-link" href="#about" data-idx="05"><span class="idx">05</span>About</a></li>
+    <li><a class="panel-link" href="#contact" data-idx="06"><span class="idx">06</span>Contact</a></li>
   </ul>
 
-  <p id="status-line">$ viewing: <span id="status-target">intro</span><span class="cursor"></span></p>
+  <p id="status-line">you are viewing: <span id="status-target">intro</span><span class="cursor"></span></p>
 </div>
 
 <div id="main">
 
   <article id="intro" class="active">
     <p class="eyebrow">Business Analytics · Data Storytelling</p>
-    <h1>Miu Tanaka<br><span>turns messy data into decisions.</span></h1>
+    <h1>Miu Tanaka<br><span>- turns data into decisions.</span></h1>
     <p class="lede">Data analyst focused on translating ambiguous business problems — wasted ad spend, unclear lead quality, low-visibility campaign performance — into clear, measurable action.</p>
     <div class="contact-row">
       <a href="mailto:miutnk0923@gmail.com">miutnk0923@gmail.com</a>
-      <a href="#">linkedin.com/in/miu-tanaka</a>
-      <a href="#">github.com/miu-tanaka</a>
-      <span>Massachusetts</span>
+      <a href="https://www.linkedin.com/in/miu-tanaka/">linkedin.com/in/miu-tanaka</a>
+      <a href="https://github.com/miutnk0923">github.com/miutnk0923</a>
+      <span>Greater Boston Area</span>
     </div>
-    <a class="cta" href="#ab-testing">See the work →</a>
+    <a class="cta panel-link" href="#lead-intel">See the work →</a>
 
     <div class="stat-strip">
       <div class="stat">
-        <div class="stat-num" style="color:var(--brick)">78.7%</div>
-        <div class="stat-label">relative conversion lift, ad exposure (A/B test)</div>
-      </div>
-      <div class="stat">
+        <span class="stat-tag" style="background:var(--clay)">Lead Intelligence</span>
         <div class="stat-num" style="color:var(--clay)">~22%</div>
         <div class="stat-label">fewer false-negative lead misclassifications</div>
       </div>
       <div class="stat">
-        <div class="stat-num" style="color:var(--denim)">~4 hrs</div>
-        <div class="stat-label">manual reporting saved per week, Email KPI dashboard</div>
+        <span class="stat-tag" style="background:var(--forest)">Engaged Contacts</span>
+        <div class="stat-num" style="color:var(--forest)">[#]</div>
+        <div class="stat-label">Engaged Contacts Analysis — data cleaning in progress</div>
       </div>
+      <div class="stat">
+        <span class="stat-tag" style="background:var(--brick)">A/B Testing</span>
+        <div class="stat-num" style="color:var(--brick)">78.7%</div>
+        <div class="stat-label">relative conversion lift, ad exposure (A/B test)</div>
+      </div>
+      <div class="stat">
+        <span class="stat-tag" style="background:var(--denim)">Tableau Dashboard</span>
+        <div class="stat-num" style="color:var(--denim)">~4 hrs</div>
+        <div class="stat-label">manual reporting saved per week, Tableau KPI dashboard</div>
+      </div>
+
+    </div>
+  </article>
+
+  <article id="lead-intel">
+    <span class="case-tag" style="background:var(--clay)">Predictive Scoring · Budget Attribution</span>
+    <h2 class="panel-title">Lead Intelligence <span class="status-pill">In Progress</span></h2>
+    <div class="case-grid">
+      <div>
+        <p class="field-label">Problem</p>
+        <p class="field-body">The sales team had low confidence in lead prioritization — high false-negative rates meant genuinely qualified prospects were being deprioritized or missed.</p>
+      </div>
+      <div>
+        <p class="field-label">Objective</p>
+        <p class="field-body">Improve lead-scoring accuracy and campaign budget allocation across the funnel, without increasing total spend.</p>
+      </div>
+      <div class="full">
+        <p class="field-label">Action</p>
+        <p class="field-body">Engineered predictive lead qualification models (Python, XGBoost, scikit-learn) across a multi-million-record CRM database. Built propensity-based campaign budget scoring models, and ran segmentation and clustering across CRM and campaign data to surface funnel bottlenecks.</p>
+      </div>
+      <div class="full outcome-block">
+        <p class="field-label">Outcome (in progress)</p>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">~22%</span><span class="field-body">reduction in false-negative lead misclassifications</span></div>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">~24%</span><span class="field-body">engagement lift, ~33% improvement in targeted conversion</span></div>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">28–32%</span><span class="field-body">projected ROI uplift at flat spend</span></div>
+      </div>
+    </div>
+    <p class="draft-note">Draft copy, relative metrics only — refine before publishing.</p>
+  </article>
+
+  <article id="engaged-contacts">
+    <span class="case-tag" style="background:var(--forest)">Customer Analytics</span>
+    <h2 class="panel-title">Engaged Contacts Analysis <span class="status-pill">Phase 1 · In Progress</span></h2>
+    <div class="placeholder-block">
+      Case study write-up coming soon. Phase 1 (data cleaning) is underway in the matching GitHub repo — this panel will get the full Problem / Objective / Action / Outcome treatment once the analysis is further along.
     </div>
   </article>
 
   <article id="ab-testing">
     <span class="case-tag" style="background:var(--brick)">A/B Testing · Causal Inference</span>
-    <h2 class="panel-title">A/B Testing — Ad Performance Lift</h2>
+    <h2 class="panel-title">A/B Testing - Ad Performance Lift</h2>
     <div class="case-grid">
       <div>
         <p class="field-label">Problem</p>
@@ -475,40 +536,6 @@
     <p class="draft-note">Draft copy — refine wording before this goes live.</p>
   </article>
 
-  <article id="lead-intel">
-    <span class="case-tag" style="background:var(--clay)">Predictive Scoring · Budget Attribution</span>
-    <h2 class="panel-title">Lead Intelligence <span class="status-pill">In Progress</span></h2>
-    <div class="case-grid">
-      <div>
-        <p class="field-label">Problem</p>
-        <p class="field-body">The sales team had low confidence in lead prioritization — high false-negative rates meant genuinely qualified prospects were being deprioritized or missed.</p>
-      </div>
-      <div>
-        <p class="field-label">Objective</p>
-        <p class="field-body">Improve lead-scoring accuracy and campaign budget allocation across the funnel, without increasing total spend.</p>
-      </div>
-      <div class="full">
-        <p class="field-label">Action</p>
-        <p class="field-body">Engineered predictive lead qualification models (Python, XGBoost, scikit-learn) across a multi-million-record CRM database. Built propensity-based campaign budget scoring models, and ran segmentation and clustering across CRM and campaign data to surface funnel bottlenecks.</p>
-      </div>
-      <div class="full outcome-block">
-        <p class="field-label">Outcome (in progress)</p>
-        <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">~22%</span><span class="field-body">reduction in false-negative lead misclassifications</span></div>
-        <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">~24%</span><span class="field-body">engagement lift, ~33% improvement in targeted conversion</span></div>
-        <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">28–32%</span><span class="field-body">projected ROI uplift at flat spend</span></div>
-      </div>
-    </div>
-    <p class="draft-note">Draft copy, relative metrics only — refine before publishing.</p>
-  </article>
-
-  <article id="engaged-contacts">
-    <span class="case-tag" style="background:var(--forest)">Customer Analytics</span>
-    <h2 class="panel-title">Engaged Contacts Analysis <span class="status-pill">Phase 1 · In Progress</span></h2>
-    <div class="placeholder-block">
-      Case study write-up coming soon. Phase 1 (data cleaning) is underway in the matching GitHub repo — this panel will get the full Problem / Objective / Action / Outcome treatment once the analysis is further along.
-    </div>
-  </article>
-
   <article id="about">
     <span class="eyebrow">About</span>
     <h2 class="panel-title">Hi, I'm Miu.</h2>
@@ -537,17 +564,17 @@
 </div>
 
 <script>
-  var links = document.querySelectorAll('#nav a');
+  var links = document.querySelectorAll('.panel-link');
   var articles = document.querySelectorAll('article');
   var statusTarget = document.getElementById('status-target');
   var navList = document.getElementById('nav');
 
   var labels = {
     intro: 'intro',
-    'ab-testing': 'reading case study 01/04',
-    'email-kpi': 'reading case study 02/04',
-    'lead-intel': 'reading case study 03/04',
-    'engaged-contacts': 'reading case study 04/04',
+    'lead-intel': 'project 01/04',
+    'engaged-contacts': 'project 02/04',
+    'ab-testing': 'project 03/04',
+    'email-kpi': 'project 04/04',
     about: 'about',
     contact: 'contact'
   };
