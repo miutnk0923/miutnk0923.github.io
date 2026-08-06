@@ -323,6 +323,32 @@
     padding-top:16px;
   }
 
+  .next-row{
+    margin-top:44px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:flex-end;
+  }
+  .next-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Libre Franklin', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    color:var(--ink);
+    text-decoration:none;
+    padding:12px 18px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--panel);
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .next-link:hover{ background:var(--paper); border-color:var(--ink); }
+  .next-link .arrow{ transition:transform .15s ease; }
+  .next-link:hover .arrow{ transform:translateX(4px); }
+
   .placeholder-block{
     border:1px dashed var(--line);
     border-radius:10px;
@@ -411,7 +437,7 @@
     <li><a class="panel-link" href="#ab-testing" data-idx="03"><span class="idx">03</span>A/B Testing - IPW</a></li>
     <li><a class="panel-link" href="#email-kpi" data-idx="04"><span class="idx">04</span>Tableau KPI Dashboard</a></li>
     <li class="nav-gap"></li>
-    <li><a class="panel-link" href="#about" data-idx="05"><span class="idx">05</span>About</a></li>
+    <li><a class="panel-link" href="#about" data-idx="05"><span class="idx">05</span>About Me</a></li>
     <li><a class="panel-link" href="#contact" data-idx="06"><span class="idx">06</span>Contact</a></li>
   </ul>
 
@@ -422,7 +448,7 @@
 
   <article id="intro" class="active">
     <p class="eyebrow">Business Analytics · Data Storytelling</p>
-    <h1>Miu Tanaka<br><span>- turns data into decisions.</span></h1>
+    <h1>Miu Tanaka<br><span>turns data into decisions.</span></h1>
     <p class="lede">Data analyst focused on translating ambiguous business problems — wasted ad spend, unclear lead quality, low-visibility campaign performance — into clear, measurable action.</p>
     <div class="contact-row">
       <a href="mailto:miutnk0923@gmail.com">miutnk0923@gmail.com</a>
@@ -481,6 +507,9 @@
       </div>
     </div>
     <p class="draft-note">Draft copy, relative metrics only — refine before publishing.</p>
+    <div class="next-row">
+      <a class="next-link panel-link" href="#engaged-contacts"><span>Next project: Engaged Contacts</span><span class="arrow">→</span></a>
+    </div>
   </article>
 
   <article id="engaged-contacts">
@@ -488,6 +517,9 @@
     <h2 class="panel-title">Engaged Contacts Analysis <span class="status-pill">Phase 1 · In Progress</span></h2>
     <div class="placeholder-block">
       Case study write-up coming soon. Phase 1 (data cleaning) is underway in the matching GitHub repo — this panel will get the full Problem / Objective / Action / Outcome treatment once the analysis is further along.
+    </div>
+    <div class="next-row">
+      <a class="next-link panel-link" href="#ab-testing"><span>Next project: A/B Testing</span><span class="arrow">→</span></a>
     </div>
   </article>
 
@@ -513,6 +545,9 @@
         <div class="outcome-item"><span class="outcome-num" style="color:var(--brick)">+25%</span><span class="field-body">projected ROI from retargeting high-activity, previously-converted users</span></div>
       </div>
     </div>
+    <div class="next-row">
+      <a class="next-link panel-link" href="#email-kpi"><span>Next project: Email KPI Dashboard</span><span class="arrow">→</span></a>
+    </div>
   </article>
 
   <article id="email-kpi">
@@ -537,10 +572,13 @@
       </div>
     </div>
     <p class="draft-note">Draft copy — refine wording before this goes live.</p>
+    <div class="next-row">
+      <a class="next-link panel-link" href="#about"><span>Continue: About Me</span><span class="arrow">→</span></a>
+    </div>
   </article>
 
   <article id="about">
-    <span class="eyebrow">About</span>
+    <span class="eyebrow">About Me</span>
     <h2 class="panel-title">Hi, I'm Miu.</h2>
     <p class="field-body" style="max-width:60ch; font-size:16px; line-height:1.75;">
       I'm a data &amp; marketing analyst currently at UniFirst Corporation, where I build predictive models and dashboards that help sales and marketing teams make sharper, faster decisions. Before this, I earned my M.S. in Business Analytics from the University of Washington's Foster School of Business, following a background in social media marketing analytics.
@@ -548,6 +586,9 @@
       I like problems that sit at the intersection of data and go-to-market strategy — where the answer isn't just a number, but a recommendation someone can actually act on. Python, SQL, and Tableau are my daily tools; causal inference and predictive modeling are where I do my best thinking.
     </p>
     <p class="draft-note">Draft copy — this is the section most worth making sound like you, not me.</p>
+    <div class="next-row">
+      <a class="next-link panel-link" href="#contact"><span>Continue: Contact</span><span class="arrow">→</span></a>
+    </div>
   </article>
 
   <article id="contact">
@@ -556,9 +597,9 @@
     <p class="lede">Open to data analyst and marketing analytics roles. The fastest way to reach me is email.</p>
     <div class="contact-row" style="margin-bottom:0;">
       <a href="mailto:miutnk0923@gmail.com">miutnk0923@gmail.com</a>
-      <a href="#">linkedin.com/in/miu-tanaka</a>
-      <a href="#">github.com/miu-tanaka</a>
-      <span>Massachusetts</span>
+      <a href="https://www.linkedin.com/in/miu-tanaka/">linkedin.com/in/miu-tanaka</a>
+      <a href="https://github.com/miutnk0923">github.com/miutnk0923</a>
+      <span>Greater Boston Area</span>
     </div>
   </article>
 
