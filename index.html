@@ -433,6 +433,23 @@
     .field-body{ line-height:1.5; }
     #about .field-body{ line-height:1.55; }
   }
+  .tb-caption{
+    font-family:'Libre Franklin', sans-serif;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin:32px 0 10px;
+  }
+  .tableau-demo-frame{
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 8px 28px rgba(43,36,32,.08);
+  }
+  .tableau-demo-frame video{
+    display:block;
+    width:100%;
+    height:auto;
+  }
 </style>
 </head>
 <body>
@@ -589,11 +606,19 @@
         <p class="field-label">Action</p>
         <p class="field-body">Designed and built a Tableau dashboard tracking CTR, open rate, and campaign-level performance, connected directly to CRM data and replacing recurring manual reporting.</p>
       </div>
-      <div class="full outcome-block">
-        <p class="field-label">Outcome</p>
-        <div class="outcome-item"><span class="outcome-num" style="color:var(--denim)">~4 hrs</span><span class="field-body">of manual reporting work saved per week</span></div>
-      </div>
+    <div class="full outcome-block">
+      <p class="field-label">Outcome</p>
+      <div class="outcome-item"><span class="outcome-num" style="color:var(--denim)">~4 hrs</span><span class="field-body">of manual reporting work saved per week</span></div>
     </div>
+    </div>
+
+    <p class="tb-caption">Live demo — Tableau, running on synthetic data.</p>
+    <div class="tableau-demo-frame">
+      <video autoplay muted loop playsinline>
+        <source src="media/tableau-kpi-demo.mp4" type="video/mp4">
+      </video>
+    </div>
+
     <p class="draft-note">Draft copy — refine wording before this goes live.</p>
     <div class="next-row">
       <a class="back-link panel-link" href="#ab-testing"><span class="arrow">←</span><span>Back</span></a>
