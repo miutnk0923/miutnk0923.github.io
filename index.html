@@ -485,7 +485,7 @@
     <li class="nav-section-label">Business Analytics Projects</li>
     <li><a class="panel-link" href="#lead-intel" data-idx="01"><span class="idx">01</span>Lead Intelligence</a></li>
     <li><a class="panel-link" href="#engaged-contacts" data-idx="02"><span class="idx">02</span>Engaged Contacts</a></li>
-    <li><a class="panel-link" href="#ab-testing" data-idx="03"><span class="idx">03</span>A/B Testing - IPW</a></li>
+    <li><a class="panel-link" href="#ab-testing" data-idx="03"><span class="idx">03</span>Causal Inference</a></li>
     <li><a class="panel-link" href="#email-kpi" data-idx="04"><span class="idx">04</span>Tableau KPI Dashboard</a></li>
     <li class="nav-gap"></li>
     <li><a class="panel-link" href="#about" data-idx="05"><span class="idx">05</span>About Me</a></li>
@@ -521,8 +521,8 @@
         <div class="stat-label">Engaged Contacts Analysis — data cleaning in progress</div>
       </a>
       <a class="stat panel-link" href="#ab-testing">
-        <span class="stat-tag" style="background:var(--brick)">A/B Testing</span>
-        <div class="stat-num" style="color:var(--brick)">78.7%</div>
+        <span class="stat-tag" style="background:var(--brick)">Causal Inference · A/B Testing</span>
+        <div class="stat-num" style="color:var(--brick)">+78.7%</div>
         <div class="stat-label">relative conversion lift, ad exposure (A/B test)</div>
       </a>
       <a class="stat panel-link" href="#email-kpi">
@@ -574,9 +574,9 @@
           <div class="full outcome-block">
             <p class="field-label">Outcome</p>
             <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">20-22%</span><span class="field-body">reduction in false-negative <strong>lead misclassifications</strong></span></div>
-            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">28–32%</span><span class="field-body">projected <strong>ROI uplift</strong> at flat spend</span></div>
-            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">20%</span><span class="field-body">QoQ growth in <strong>web leads</strong></span></div>
-            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">12-15%</span><span class="field-body">QoQ growth in <strong>qualified leads</strong></span></div>
+            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">+28-32%</span><span class="field-body">projected <strong>ROI uplift</strong> at flat spend</span></div>
+            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">+20%</span><span class="field-body">QoQ growth in <strong>web leads</strong></span></div>
+            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">+12-15%</span><span class="field-body">QoQ growth in <strong>qualified leads</strong></span></div>
           </div>
         </div>
         <div class="next-row">
@@ -598,25 +598,35 @@
   </article>
 
   <article id="ab-testing">
-    <span class="case-tag" style="background:var(--brick)">A/B Testing · Causal Inference</span>
-    <h2 class="panel-title">A/B Testing - Ad Performance Lift</h2>
+    <span class="case-tag" style="background:var(--brick)">Ad Performance Lift · IPW</span>
+    <h2 class="panel-title">Causal Inference - A/B Testing</h2>
     <div class="case-grid">
-      <div>
+      <div class="full">
         <p class="field-label">Problem</p>
-        <p class="field-body">A digital marketing team needed to know whether exposing users to a new online ad campaign meaningfully increased conversion, and how that effect varied across user segments.</p>
+        <ul class="field-body">
+          <li>Digital marketing team needed to know whether a new ad campaign <strong>meaningfully increased conversion</strong></li>
+          <li><strong>Naive comparison overstates lift:</strong> treated users skew more active and higher-converting to begin with</li>
+        </ul>
       </div>
-      <div>
+      <div class="full">
         <p class="field-label">Objective</p>
-        <p class="field-body">Quantify the causal impact of ad exposure on conversion using rigorous statistical methods, and recommend strategy based on reliable lift estimates rather than naive comparisons.</p>
+        <ul class="field-body">
+          <li><strong>Quantify causal impact</strong> of ad exposure on conversion using various statistical methods</li>
+          <li>Recommend strategy based on <strong>data-driven lift estimates</strong>, not naive comparisons</li>
+        </ul>
       </div>
       <div class="full">
         <p class="field-label">Action</p>
-        <p class="field-body">Ran randomization checks to validate the experimental design across <b>2M users</b>, then calculated Average Treatment Effect on the Treated (<b>ATT: 26.2%</b>) and Intent-to-Treat (<b>ITT: 23.8%</b>). Applied Inverse Probability Weighting, Double Machine Learning, and regression models to control for covariates like prior conversion behavior, activity level, and income.</p>
+        <ul class="field-body">
+          <li><strong>2M users</strong> randomization-checked to validate experimental design</li>
+          <li>Average Treatment Effect on the Treated (<strong>ATT: 26.2%</strong>) and Intent-to-Treat (<strong>ITT: 23.8%</strong>) projected</li>
+          <li>Inverse Probability Weighting (<strong>IPW</strong>), <strong>Double Machine Learning</strong>, and regression applied to control for covariates such as prior conversion behavior, activity level, income</li>
+        </ul>
       </div>
       <div class="full outcome-block">
         <p class="field-label">Outcome</p>
-        <div class="outcome-item"><span class="outcome-num" style="color:var(--brick)">+11.8%</span><span class="field-body">absolute conversion lift from ad exposure (78.7% relative)</span></div>
-        <div class="outcome-item"><span class="outcome-num" style="color:var(--brick)">+25%</span><span class="field-body">projected ROI from retargeting high-activity, previously-converted users</span></div>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--brick)">+78.7%</span><span class="field-body"><strong>relative lift</strong> in conversion from ad exposure (<strong>11.8% absolute</strong>)</span></div>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--brick)">+25%</span><span class="field-body"><strong>projected ROI</strong> from retargeting high-activity, previously-converted users</span></div>
       </div>
     </div>
     <div class="next-row">
