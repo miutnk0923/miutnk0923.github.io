@@ -464,6 +464,11 @@
     width:100%;
     height:auto;
   }
+  .tableau-demo-frame img{
+    display:block;
+    width:100%;
+    height:auto;
+  }
 </style>
 </head>
 <body>
@@ -574,9 +579,9 @@
           <div class="full outcome-block">
             <p class="field-label">Outcome</p>
             <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">20-22%</span><span class="field-body">reduction in false-negative <strong>lead misclassifications</strong></span></div>
-            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">+28-32%</span><span class="field-body">projected <strong>ROI uplift</strong> at flat spend</span></div>
-            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">+20%</span><span class="field-body">QoQ growth in <strong>web leads</strong></span></div>
-            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">+12-15%</span><span class="field-body">QoQ growth in <strong>qualified leads</strong></span></div>
+            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">28-32%</span><span class="field-body">projected <strong>ROI uplift</strong> at flat spend</span></div>
+            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">20%</span><span class="field-body">QoQ growth in <strong>web leads</strong></span></div>
+            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">12-15%</span><span class="field-body">QoQ growth in <strong>qualified leads</strong></span></div>
           </div>
         </div>
         <div class="next-row">
@@ -636,35 +641,44 @@
   </article>
 
   <article id="email-kpi">
-    <span class="case-tag" style="background:var(--denim)">Reporting · Dashboarding</span>
+    <span class="case-tag" style="background:var(--denim)">KPI Reporting · Dashboarding</span>
     <h2 class="panel-title">Tableau KPI Dashboard <span class="status-pill">Live at UniFirst</span></h2>
     <div class="case-grid">
-      <div>
+      <div class="full">
         <p class="field-label">Problem</p>
-        <p class="field-body">Email campaign performance was tracked through ad hoc, manual reporting — making it slow to answer basic questions about CTR, open rate, or campaign-level trends.</p>
+        <ul class="field-body">
+          <li>Email campaign performance was tracked through <strong>ad hoc</strong> and <strong>manual reporting</strong></li>
+          <li><strong>Slow to answer basic questions:</strong> CTR, open rate, campaign-level trends required a custom pull each time</li>
+        </ul>
       </div>
-      <div>
+      <div class="full">
         <p class="field-label">Objective</p>
-        <p class="field-body">Build one executive-level source of truth for email KPIs, so stakeholders could see performance without asking for a custom pull each time.</p>
+        <ul class="field-body">
+          <li>Build one <strong>executive-level source of truth</strong> for email KPIs</li>
+          <li>Let stakeholders <strong>self-serve performance data</strong> without requesting a custom pull</li>
+        </ul>
       </div>
       <div class="full">
         <p class="field-label">Action</p>
-        <p class="field-body">Designed and built a Tableau dashboard tracking CTR, open rate, and campaign-level performance, connected directly to CRM data and replacing recurring manual reporting.</p>
+        <ul class="field-body">
+          <li>Designed and built a <strong>Tableau dashboard</strong> tracking CTR, open rate, and campaign-level performance</li>
+        </ul>
       </div>
-    <div class="full outcome-block">
-      <p class="field-label">Outcome</p>
-      <div class="outcome-item"><span class="outcome-num" style="color:var(--denim)">~4 hrs</span><span class="field-body">of manual reporting work saved per week</span></div>
-    </div>
+      <div class="full outcome-block">
+        <p class="field-label">Outcome</p>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--denim)">~4 hrs</span><span class="field-body">of manual reporting work saved per week</span></div>
+        <ul class="field-body outcome-list">
+          <li>Campaign performance questions answered in <strong>real time</strong> instead of waiting on a manual pull</li>
+          <li>Underperforming campaigns surfaced sooner, enabling <strong>faster course-correction</strong></li>
+        </ul>
+      </div>
     </div>
 
-    <p class="tb-caption">Live demo — Tableau, running on synthetic data.</p>
+    <p class="tb-caption">Tableau KPI Dashboard with synthetic data.</p>
     <div class="tableau-demo-frame">
-      <video autoplay muted loop playsinline>
-        <source src="media/tableau-kpi-demo.mp4" type="video/mp4">
-      </video>
+      <img src="media/tableau-kpi-dashboard.png" alt="Email KPI Tableau dashboard showing yearly stats, emails sent by month, campaign size vs CTR bubble chart, and campaign open rate and CTR rankings">
     </div>
 
-    <p class="draft-note">Draft copy — refine wording before this goes live.</p>
     <div class="next-row">
       <a class="back-link panel-link" href="#ab-testing"><span class="arrow">←</span><span>Back</span></a>
       <a class="next-link panel-link" href="#about"><span>Next</span><span class="arrow">→</span></a>
