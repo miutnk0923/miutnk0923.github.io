@@ -545,7 +545,7 @@
       <a class="stat panel-link" href="#lead-intel">
         <span class="stat-tag" style="background:var(--clay)">Lead Intelligence</span>
         <div class="stat-num" style="color:var(--clay)">~22%</div>
-        <div class="stat-label">fewer false-negative lead misclassifications</div>
+        <div class="stat-label">fewer false-negative lead misclassifications <span class="stat-more">→ click to see more</span></div>
       </a>
       <a class="stat panel-link" href="#engaged-contacts">
         <span class="stat-tag" style="background:var(--forest)">Engaged Contacts</span>
@@ -555,12 +555,12 @@
       <a class="stat panel-link" href="#ab-testing">
         <span class="stat-tag" style="background:var(--brick)">Causal Inference · A/B Testing</span>
         <div class="stat-num" style="color:var(--brick)">+78.7%</div>
-        <div class="stat-label">relative conversion lift, ad exposure (A/B test)</div>
+        <div class="stat-label">relative conversion lift <span class="stat-more">→ click to see more</span></div>
       </a>
       <a class="stat panel-link" href="#email-kpi">
         <span class="stat-tag" style="background:var(--denim)">Tableau KPI Dashboard</span>
         <div class="stat-num" style="color:var(--denim)">~4 hrs</div>
-        <div class="stat-label">manual reporting saved per week, Tableau KPI dashboard</div>
+        <div class="stat-label">manual reporting saved per week <span class="stat-more">→ click to see more</span></div>
       </a>
 
     </div>
@@ -568,7 +568,7 @@
 
   <article id="lead-intel">
         <span class="case-tag" style="background:var(--clay)">Predictive Scoring · Budget Attribution</span>
-        <h2 class="panel-title">Lead Intelligence <span class="status-pill">Live at UniFirst</span></h2>
+        <h2 class="panel-title">Lead Intelligence</h2>
         <div class="case-grid">
           <div class="full">
             <p class="field-label">Problem</p>
@@ -618,10 +618,39 @@
       </article>
 
   <article id="engaged-contacts">
-    <span class="case-tag" style="background:var(--forest)">Customer Analytics</span>
-    <h2 class="panel-title">Engaged Contacts Analysis <span class="status-pill">Phase 1 · In Progress</span></h2>
-    <div class="placeholder-block">
-      Case study write-up coming soon. Phase 1 (data cleaning) is underway in the matching GitHub repo — this panel will get the full Problem / Objective / Action / Outcome treatment once the analysis is further along.
+    <span class="case-tag" style="background:var(--forest)">Engagement Modeling · Segmentation</span>
+    <h2 class="panel-title">Engagement Prediction - Segmentation</h2>
+    <div class="case-grid">
+      <div class="full">
+        <p class="field-label">Problem</p>
+        <ul class="field-body">
+          <li>Campaigns gifts, mailers, targeted emails was driving prospect appointments, but no visibility into who was actually engaging</li>
+          <li>Unclear whether engagement was random or concentrated by region or industry — same open question for customer campaigns</li>
+          <li>Campaigns kept reaching contacts unlikely to engage, with no way to flag who was worth deeper investment</li>
+        </ul>
+      </div>
+      <div class="full">
+        <p class="field-label">Objective</p>
+        <ul class="field-body">
+          <li>Identify what separates engaged from non-engaged contacts, across prospect and customer audiences</li>
+          <li>Segment by engagement likelihood — who to keep targeting, push further down the funnel, or deprioritize</li>
+        </ul>
+      </div>
+      <div class="full">
+        <p class="field-label">Action</p>
+        <ul class="field-body">
+          <li>Engineered firmographic and behavioral features — region, industry, company size, wearer count, campaign history — across separate prospect and customer datasets</li>
+          <li>Ran univariate analysis to flag engagement-associated fields, then logistic regression and XGBoost to handle class imbalance and capture category-level effects</li>
+          <li>Clustered engaged contacts with K-prototypes — elbow/silhouette diagnostics converged on <b>3 segments</b>: high-value/high-contact, high-contact/low-value, low-contact/high-value</li>
+          <li>Applied validated segments to campaign strategy — tailored messaging, content, and mailer targeting</li>
+        </ul>
+      </div>
+      <div class="full outcome-block">
+        <p class="field-label">Outcome</p>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--forest)">+8-10 pts</span><span class="field-body">mailer engagement rate for prospects, same budget</span></div>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--forest)">+13-17 pts</span><span class="field-body">appointment-set rate for prospects</span></div>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--forest)">+0.6-0.8 pts</span><span class="field-body">CTR across matched campaign types</span></div>
+      </div>
     </div>
     <div class="next-row">
       <a class="back-link panel-link" href="#lead-intel"><span class="arrow">←</span><span>Back</span></a>
