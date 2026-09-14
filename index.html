@@ -469,6 +469,29 @@
     width:100%;
     height:auto;
   }
+  .about-top{
+    overflow:hidden;
+    margin-bottom:20px;
+  }
+  .about-photo{
+    float:right;
+    width:240px;
+    height:240px;
+    object-fit:cover;
+    border-radius:14px;
+    border:1px solid var(--line);
+    box-shadow:0 8px 28px rgba(43,36,32,.08);
+    margin:0 0 16px 28px;
+  }
+  @media (max-width: 640px){
+    .about-photo{
+      float:none;
+      display:block;
+      margin:0 auto 20px;
+      width:180px;
+      height:180px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -564,7 +587,7 @@
             <ul class="field-list">
               <li class="field-body">Engineered <strong>predictive lead qualification</strong> models (Python, XGBoost, scikit-learn): cut false-negative misclassifications by <strong>20-22%</strong></li>
               <li class="field-body">Built <strong>propensity-based campaign budget scoring</strong> models, projected <strong>28-32%</strong> ROI uplift at flat spend</li>
-              <li class="field-body">Applied <strong>budget allocation model</strong> and grew web leads by <strong>20%</strong> QoQ and qualified leads by <strong>12-15%</strong> QoQ</li>
+              <li class="field-body">Applied <strong>budget allocation model</strong> and grew total web leads by <strong>20%</strong> QoQ and qualified leads by <strong>15%</strong> QoQ</li>
             </ul>
           </div>
           <div class="full">
@@ -580,8 +603,8 @@
             <p class="field-label">Outcome</p>
             <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">20-22%</span><span class="field-body">reduction in false-negative <strong>lead misclassifications</strong></span></div>
             <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">28-32%</span><span class="field-body">projected <strong>ROI uplift</strong> at flat spend</span></div>
-            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">20%</span><span class="field-body">QoQ growth in <strong>web leads</strong></span></div>
-            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">12-15%</span><span class="field-body">QoQ growth in <strong>qualified leads</strong></span></div>
+            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">20%</span><span class="field-body">QoQ growth in <strong>total web leads</strong></span></div>
+            <div class="outcome-item"><span class="outcome-num" style="color:var(--clay)">15%</span><span class="field-body">QoQ growth in <strong>qualified leads</strong></span></div>
           </div>
         </div>
         <div class="next-row">
@@ -648,7 +671,7 @@
         <p class="field-label">Problem</p>
         <ul class="field-body">
           <li>Email campaign performance was tracked through <strong>ad hoc</strong> and <strong>manual reporting</strong></li>
-          <li><strong>Slow to answer basic questions:</strong> CTR, open rate, campaign-level trends required a custom pull each time</li>
+          <li>A <strong>custom pull</strong> was required to obtain CTR, open rate, and campaign-level trends</li>
         </ul>
       </div>
       <div class="full">
@@ -688,12 +711,18 @@
   <article id="about">
     <span class="eyebrow">About Me</span>
     <h2 class="panel-title">Hi, I'm Miu.</h2>
+    <div class="about-top">
+      <img class="about-photo" src="media/miu-headshot.jpeg" alt="Portrait of Miu Tanaka">
+      <p class="field-body" style="max-width:60ch; font-size:15.5px; line-height:1.6;">
+        I am a <strong>data &amp; marketing analyst</strong> at UniFirst Corporation, where I turn ambiguous questions — <strong><em>who</em></strong> to target, <strong><em>where</em></strong> to spend, and <strong><em>what</em></strong> actually worked — into decisions with <strong><em><span style="color:var(--forest)">measurable outcomes</span></em></strong>. 
+        I bring hands-on experience applying <strong>statistical methods and data science</strong> in real business environments, backed by an <strong>M.S. in Business Analytics</strong> from University of Washington and a background in social media marketing analytics.
+      </p>
+    </div>
     <p class="field-body" style="max-width:60ch; font-size:15.5px; line-height:1.6;">
-      I'm a data &amp; marketing analyst currently at UniFirst Corporation, where I build predictive models and dashboards that help sales and marketing teams make sharper, faster decisions. Before this, I earned my M.S. in Business Analytics from the University of Washington's Foster School of Business, following a background in social media marketing analytics.
-      <br><br>
-      I like problems that sit at the intersection of data and go-to-market strategy — where the answer isn't just a number, but a recommendation someone can actually act on. Python, SQL, and Tableau are my daily tools; causal inference and predictive modeling are where I do my best thinking.
+      I am passionate about problems that sit at the intersection of <strong>data and GTM strategy</strong>, where the answer isn't just a number, but a <strong>recommendation someone can act on with <em><span style="color:var(--forest)">confidence</span></em></strong>. 
+      To achieve that efficiently, I do my best work designing and structuring a process from scratch, or fixing one that isn't working. 
+      Python, SQL, and Tableau are my daily tools.
     </p>
-    <p class="draft-note">Draft copy — this is the section most worth making sound like you, not me.</p>
     <div class="next-row">
       <a class="back-link panel-link" href="#email-kpi"><span class="arrow">←</span><span>Back</span></a>
       <a class="next-link panel-link" href="#contact"><span>Next</span><span class="arrow">→</span></a>
@@ -732,7 +761,7 @@
     'engaged-contacts': 'project 02/04',
     'ab-testing': 'project 03/04',
     'email-kpi': 'project 04/04',
-    about: 'about',
+    'about': 'about me',
     contact: 'contact'
   };
 
