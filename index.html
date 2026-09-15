@@ -334,6 +334,17 @@
   }
   .field-body{ font-size:15.5px; line-height:1.6; margin:0; color:var(--ink); }
   .field-body b{ font-weight:600; }
+    .skill-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:6px;
+  }
+  .skill-chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
   .outcome-block{ margin-top:10px; padding-top:26px; border-top:1px solid var(--line); }
   .outcome-item{ display:flex; gap:14px; align-items:baseline; margin-bottom:12px; }
   .outcome-num{
@@ -341,6 +352,9 @@
     font-size:19px; font-weight:600;
     min-width:70px;
   }
+  #engaged-contacts .outcome-num{
+    min-width:90px;
+  }  
   .draft-note{
     margin-top:34px;
     font-family:'IBM Plex Mono', monospace;
@@ -516,7 +530,7 @@
     <li class="nav-gap"></li>
     <li class="nav-section-label">Business Analytics Projects</li>
     <li><a class="panel-link" href="#lead-intel" data-idx="01"><span class="idx">01</span>Lead Intelligence</a></li>
-    <li><a class="panel-link" href="#engaged-contacts" data-idx="02"><span class="idx">02</span>Engaged Contacts</a></li>
+    <li><a class="panel-link" href="#engaged-contacts" data-idx="02"><span class="idx">02</span>Engagement Modeling</a></li>
     <li><a class="panel-link" href="#ab-testing" data-idx="03"><span class="idx">03</span>Causal Inference</a></li>
     <li><a class="panel-link" href="#email-kpi" data-idx="04"><span class="idx">04</span>Tableau KPI Dashboard</a></li>
     <li class="nav-gap"></li>
@@ -548,9 +562,9 @@
         <div class="stat-label">fewer false-negative lead misclassifications <span class="stat-more">→ click to see more</span></div>
       </a>
       <a class="stat panel-link" href="#engaged-contacts">
-        <span class="stat-tag" style="background:var(--forest)">Engaged Contacts</span>
-        <div class="stat-num" style="color:var(--forest)">[#]</div>
-        <div class="stat-label">Engaged Contacts Analysis — data cleaning in progress</div>
+        <span class="stat-tag" style="background:var(--forest)">Engagement Modeling</span>
+        <div class="stat-num" style="color:var(--forest)">+17 pts</div>
+        <div class="stat-label">higher appointment-set rate from engagement-based targeting <span class="stat-more">→ click to see more</span></div>
       </a>
       <a class="stat panel-link" href="#ab-testing">
         <span class="stat-tag" style="background:var(--brick)">Causal Inference · A/B Testing</span>
@@ -624,32 +638,40 @@
       <div class="full">
         <p class="field-label">Problem</p>
         <ul class="field-body">
-          <li>Campaigns gifts, mailers, targeted emails was driving prospect appointments, but no visibility into who was actually engaging</li>
-          <li>Unclear whether engagement was random or concentrated by region or industry — same open question for customer campaigns</li>
-          <li>Campaigns kept reaching contacts unlikely to engage, with no way to flag who was worth deeper investment</li>
+          <li>Campaign gifts, mailers, emails drove prospect appointments, but <strong>no visibility into who was engaging</strong></li>
+          <li>Unclear if engagement was <strong>random</strong> or <strong>concentrated</strong> by characteristics</li>
+          <li>No way to identify contacts worth deeper investment, so campaigns kept <strong>reaching low-likelihood audiences</strong></li>
         </ul>
       </div>
       <div class="full">
         <p class="field-label">Objective</p>
         <ul class="field-body">
-          <li>Identify what separates engaged from non-engaged contacts, across prospect and customer audiences</li>
-          <li>Segment by engagement likelihood — who to keep targeting, push further down the funnel, or deprioritize</li>
+          <li>Identify <strong>what separates engaged from non-engaged contacts</strong>, across prospect and customer audiences</li>
+          <li>Segment by <strong>engagement likelihood</strong> to guide targeting, escalation, or deprioritization</li>
         </ul>
       </div>
       <div class="full">
         <p class="field-label">Action</p>
         <ul class="field-body">
-          <li>Engineered firmographic and behavioral features — region, industry, company size, wearer count, campaign history — across separate prospect and customer datasets</li>
-          <li>Ran univariate analysis to flag engagement-associated fields, then logistic regression and XGBoost to handle class imbalance and capture category-level effects</li>
-          <li>Clustered engaged contacts with K-prototypes — elbow/silhouette diagnostics converged on <b>3 segments</b>: high-value/high-contact, high-contact/low-value, low-contact/high-value</li>
-          <li>Applied validated segments to campaign strategy — tailored messaging, content, and mailer targeting</li>
+          <li>Engineered <strong>firmographic and behavioral</strong> features across prospect and customer datasets</li>
+          <li><strong>Logistic regression</strong> and <strong>XGBoost</strong> to flag engagement drivers and handle class imbalance</li>
+          <li><strong>K-prototypes clustering</strong> surfaced <strong>3 segments</strong> and applied to campaign targeting and messaging</li>
         </ul>
       </div>
+      <div class="full">
+        <p class="field-label">Tools & Methods</p>
+        <div class="skill-row">
+          <span class="skill-chip">Python /</span>
+          <span class="skill-chip">statsmodels /</span>
+          <span class="skill-chip">XGBoost /</span>
+          <span class="skill-chip">K-Prototypes</span>
+        </div>
+      </div>      
       <div class="full outcome-block">
         <p class="field-label">Outcome</p>
-        <div class="outcome-item"><span class="outcome-num" style="color:var(--forest)">+8-10 pts</span><span class="field-body">mailer engagement rate for prospects, same budget</span></div>
-        <div class="outcome-item"><span class="outcome-num" style="color:var(--forest)">+13-17 pts</span><span class="field-body">appointment-set rate for prospects</span></div>
-        <div class="outcome-item"><span class="outcome-num" style="color:var(--forest)">+0.6-0.8 pts</span><span class="field-body">CTR across matched campaign types</span></div>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--forest)">+10 pts</span><span class="field-body">mailer engagement rate for prospects</span></div>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--forest)">+17 pts</span><span class="field-body">appointment-set rate for prospects</span></div>
+        <div class="outcome-item"><span class="outcome-num" style="color:var(--forest)">+0.8 pts</span><span class="field-body">CTR across matched campaign types</span></div>
       </div>
     </div>
     <div class="next-row">
@@ -684,6 +706,15 @@
           <li>Inverse Probability Weighting (<strong>IPW</strong>), <strong>Double Machine Learning</strong>, and regression applied to control for covariates such as prior conversion behavior, activity level, income</li>
         </ul>
       </div>
+      <div class="full">
+        <p class="field-label">Tools & Methods</p>
+        <div class="skill-row">
+          <span class="skill-chip">Python /</span>
+          <span class="skill-chip">statsmodels /</span>
+          <span class="skill-chip">IPW /</span>
+          <span class="skill-chip">Double ML</span>
+        </div>
+      </div>      
       <div class="full outcome-block">
         <p class="field-label">Outcome</p>
         <div class="outcome-item"><span class="outcome-num" style="color:var(--brick)">+78.7%</span><span class="field-body"><strong>relative lift</strong> in conversion from ad exposure (<strong>11.8% absolute</strong>)</span></div>
@@ -720,6 +751,14 @@
           <li>Designed and built a <strong>Tableau dashboard</strong> tracking CTR, open rate, and campaign-level performance</li>
         </ul>
       </div>
+      <div class="full">
+        <p class="field-label">Tools & Methods</p>
+        <div class="skill-row">
+          <span class="skill-chip">Tableau /</span>
+          <span class="skill-chip">Microsoft Dynamics CRM /</span>
+          <span class="skill-chip">MailChimp</span>          
+        </div>
+      </div>      
       <div class="full outcome-block">
         <p class="field-label">Outcome</p>
         <div class="outcome-item"><span class="outcome-num" style="color:var(--denim)">~4 hrs</span><span class="field-body">of manual reporting work saved per week</span></div>
